@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/resume":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/resume","hostpath":"/websites/resume","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/websites/resume","disabled":false}}}
