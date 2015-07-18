@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 
+
+
+@section('sidebar')
+    @if($experience->file)
+        <img src="{{$experience->file}}" alt="" />
+    @endif
+@endsection
+
 @section('content')
     {!! Form::model($experience, ['route'=>'admin::resume::update', 'method' => 'put', 'files' => true]) !!}
 

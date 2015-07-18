@@ -99,13 +99,11 @@ class AdminResumeController extends Controller
         $experience = Experience::find($request->input('id'));
         $experience->fill($request->except('id', '_token', '_method'));
 
-        $newFileName = $experience->id . '.' . $request->file('file')->getClientOriginalExtension();
-
-
-
-        $file = $request->file('file')->move(public_path('experience-images'), $newFileName);
-
-        $experience->file = '/experience-images/' . $newFileName;
+        if($request->has('file')){
+            $newFileName = $experience->id . '.' . $request->file('file')->getClientOriginalExtension();
+            $file = $request->file('file')->move(public_path('experience-images'), $newFileName);
+            $experience->file = '/experience-images/' . $newFileName;
+        }
 
         $experience->save();
 

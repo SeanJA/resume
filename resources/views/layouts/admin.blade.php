@@ -11,38 +11,27 @@
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/app.js"></script>
 </head>
-<body>
+<body class="admin">
 <div class="container row">
     <header class="hero-unit">
         <div class="row">
             <div class="large-3 columns hide-for-small hide-for-print">
                 @include ('partials.social')
             </div>
-            {{--<div class="large-3 columns bio">--}}
-                {{--<img src="/assets/img/seanja.png" alt="" class="hide-for-small"/>--}}
-                {{--<img src="/assets/img/seanja-eyes.png" alt="" class="hide-for-medium-up"/>--}}
-            {{--</div>--}}
-            {{--<div class="large-6 columns">--}}
-                {{--<h1>Hi, I'm Sean</h1>--}}
+            <div class="large-3 columns bio">
+                <img src="/assets/img/seanja.png" alt="" class="hide-for-small"/>
+                <img src="/assets/img/seanja-eyes.png" alt="" class="hide-for-medium-up"/>
+            </div>
+            <div class="large-6 columns">
+                <h1>Hi, I'm Sean</h1>
 
-                {{--<p>Web application developer in London Ontario.</p>--}}
-            {{--</div>--}}
+                <p>Web application developer in London Ontario.</p>
+            </div>
         </div>
     </header>
     <div class="row">
         <div class="large-3 columns sidebar hide-for-small hide-for-print">
-            @if (!empty($tags))
-                <div class="skills">
-                    <h5>Looking for some specific skills?</h5>
-                    <ul class="skill-list">
-                        @foreach ($tags as $tag):
-                        <li class="{{$tag->count < 2 ? 'hide-for-medium-down' : ''}}">
-                            <a class="skill" href="#" data-tag="{{$tag->keyname}}">{{$tag->name}} ({{$tag->count}})</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @yield('sidebar')
         </div>
         <div class="large-9 columns content">
             @if ($errors->any())

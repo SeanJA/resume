@@ -1,11 +1,18 @@
 @extends('layouts.admin')
 
+@section('sidebar')
+    @if($experience->file)
+        <img src="{{$experience->file}}" alt="" />
+    @endif
+@endsection
+
+
 @section('content')
-    {{$experience->title}}
-    {{$experience->company}}
-    {{$experience->start}}
-    {{$experience->end}}
-    {{$experience->type}}
-    {{$experience->description}}
-    {{$experience->image}}
+    <h3>
+        {{$experience->title}}
+    </h3>
+    <h4>{{$experience->company}}</h4>
+    <div>{{$experience->start}} - {{$experience->end}}</div>
+    <div>{{$experience->type}}</div>
+    {!! $experience->markdown_description !!}
 @endsection
