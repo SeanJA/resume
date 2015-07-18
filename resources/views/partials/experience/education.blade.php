@@ -6,16 +6,12 @@
     <h4>
         @ {{$experience->company}}
     </h4>
-    <?php
-    $start = new DateTime($experience['Experience']['start']);
-    $end = new DateTime($experience['Experience']['end']);
-    ?>
     <time>
-        <?php echo $start->format('Y') ?> - <?php echo $end->format('Y') ?>
+        {{$experience->carbon_start->format('Y')}}@if($experience->carbon_end) - {{$experience->carbon_end->format('Y')}} @endif
     </time>
     <div>
         <div>
-            {!! markdown($experience->description) !!}
+            {!! $experience->markdown_description !!}
             &nbsp;
         </div>
         {{--@include('tags', ['tags'=>$experience->tags()])--}}

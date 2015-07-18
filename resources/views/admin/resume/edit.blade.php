@@ -2,7 +2,7 @@
 
 @section('content')
     {!! Form::model($experience, ['route'=>'admin::resume::update', 'method' => 'put', 'files' => true]) !!}
-    {{dump($experience)}}
+
     {!! Form::hidden('id') !!}
 
     {!! Form::label('title', 'Title') !!}
@@ -15,7 +15,7 @@
     {!! Form::date('start', null, ['required'=>'required']) !!}
 
     {!! Form::label('end', 'End') !!}
-    {!! Form::date('end', null) !!}
+    {!! Form::date('end') !!}
 
     {!! Form::label('type', 'Type') !!}
     {!! Form::select('type', experience_types(), null, ['required'=>'required']) !!}

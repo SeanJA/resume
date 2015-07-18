@@ -2,16 +2,17 @@
 
 namespace App;
 
+use App\Presenters\ExperiencePresenter;
 use Illuminate\Database\Eloquent\Model;
-use App\Tags;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
 /**
  * Class Experience
  *
  * @package App
  */
-class Experience extends Model
+class Experience extends Model implements HasPresenter
 {
     use SoftDeletes;
 
@@ -37,11 +38,20 @@ class Experience extends Model
         'created_at',
         'deleted_at',
     ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tags()
     {
-        return $this->hasMany('Tags');
+        return $this->hasMany(Tag::class);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPresenterClass()
+    {
+        return ExperiencePresenter::class;
     }
 }

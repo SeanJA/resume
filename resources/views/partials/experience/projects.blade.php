@@ -8,8 +8,8 @@
                         {{$experience->title}}
                     </h3>
                     @include ('partials.time', [
-                        'start' => \Carbon\Carbon::parse($experience->start),
-                        'end' => is_null($experience->end)? null : \Carbon\Carbon::parse($experience->end)
+                        'start' => $experience->carbon_start,
+                        'end' => $experience->carbon_end
                     ])
                 </div>
                 @if (!empty($experience->file))
@@ -24,12 +24,12 @@
                         {{$experience->title}}
                     </h3>
                     @include ('partials.time', [
-                        'start' => \Carbon\Carbon::parse($experience->start),
-                        'end' => is_null($experience->end)? null : \Carbon\Carbon::parse($experience->end)
+                        'start' => $experience->carbon_start,
+                        'end' => $experience->carbon_end
                     ])
                 </div>
                 <div>
-                    {!! markdown($experience->description) !!}
+                    {!! $experience->markdown_description !!}
                     &nbsp;
                 </div>
             </div>
