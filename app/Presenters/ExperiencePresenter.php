@@ -38,14 +38,16 @@ class ExperiencePresenter extends BasePresenter
     /**
      * @return static
      */
-    public function carbon_start(){
+    public function carbon_start()
+    {
         return $this->wrappedObject->start;
     }
 
     /**
      * @return null|static
      */
-    public function carbon_end(){
+    public function carbon_end()
+    {
         $end = $this->wrappedObject->end;
         return is_null($end)? null : $end;
     }
@@ -53,7 +55,8 @@ class ExperiencePresenter extends BasePresenter
     /**
      * @return string
      */
-    public function markdown_description(){
+    public function markdown_description()
+    {
         $description = $this->wrappedObject->description;
         return markdown($description);
     }
