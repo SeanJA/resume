@@ -9,8 +9,24 @@ use cebe\markdown\Markdown;
 function markdown($markdown)
 {
     static $parser;
-    if(!$parser){
+    if (!$parser) {
         $parser = new Markdown();
     }
+
     return $parser->parse($markdown);
+}
+
+/**
+ * Returns a list of the experience types that are valid
+ * @return array
+ */
+function experience_types()
+{
+    return [
+        '' => null,
+        'Education' => 'Education',
+        'Work' => 'Work',
+        'Open-source' => 'Open-source',
+        'Projects' => 'Projects'
+    ];
 }

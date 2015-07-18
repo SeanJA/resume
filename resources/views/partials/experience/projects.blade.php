@@ -14,7 +14,7 @@
                 </div>
                 @if (!empty($experience->file))
                     <div class="image">
-                        <?php //echo $this->Html->image($experience['Experience']['file']); ?>
+                        <img src="{!! $experience->file !!}" alt="" />
                     </div>
                 @endif
             </div>

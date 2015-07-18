@@ -1,6 +1,6 @@
 <?php
 
-use App\Experiences;
+use App\Experience;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +17,7 @@ class ExperienceSeeder extends Seeder
         DB::table('experiences')->delete();
 
         for($i = 0; $i < 5; $i++){
-            Experiences::create([
+            Experience::create([
                 'title'=>'Project Title' . $i,
                 'company' => 'Personal',
                 'start' => Carbon::now(),
@@ -33,7 +33,7 @@ ille capta quid undas parantis cornibus quaecumque!'
         }
 
         for($i = 0; $i < 5; $i++){
-            Experiences::create([
+            Experience::create([
                 'title'=>'Education Title ' . $i,
                 'company' => 'Generic High, Everywhere, Canada ',
                 'start' => Carbon::parse('-'.$i.' year'),
@@ -49,7 +49,7 @@ ille capta quid undas parantis cornibus quaecumque!'
         }
 
         for($i = 0; $i < 5; $i++){
-            Experiences::create([
+            Experience::create([
                 'title'=>'Open Source Title ' . $i,
                 'company' => 'Open source project name ' . $i,
                 'start' => Carbon::parse('-'.($i * 3).' year'),
@@ -65,7 +65,7 @@ ille capta quid undas parantis cornibus quaecumque!'
         }
 
         for($i = 0; $i < 5; $i++){
-            Experiences::create([
+            Experience::create([
                 'title'=>'Work Title ' . $i,
                 'company' => 'Work company ' . $i,
                 'start' => Carbon::parse('-'.$i.' year'),
