@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class ResumeController extends Controller
 {
@@ -24,7 +25,7 @@ class ResumeController extends Controller
             'projects' => Experience::where(['type' => 'Projects'])->get(),
         ];
 
-        return view('resume.index', ['experiences' => $experiences]);
+        return view('resume.index', compact('experiences'));
     }
 
 }
