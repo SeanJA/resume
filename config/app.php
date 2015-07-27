@@ -147,8 +147,8 @@ return [
         /*
          * Other providers...
          */
-        Collective\Html\HtmlServiceProvider::class,
         McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
+        App\Providers\HtmlServiceProvider::class, //mine
     ],
 
     /*
