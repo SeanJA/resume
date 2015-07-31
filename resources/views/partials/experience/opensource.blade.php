@@ -12,6 +12,6 @@
             {!! $experience->markdown_description !!}
             &nbsp;
         </div>
-        {{--@include('tags', ['tags'=>$experience->tags()])--}}
+        @include('partials.tags')
     </div>
 </div>

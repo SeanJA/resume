@@ -34,6 +34,6 @@
                 </div>
             </div>
         </div>
-        {{--@include('tags', ['tags'=>$experience->tags()])--}}
+        @include('partials.tags')
     </div>
 </div>
