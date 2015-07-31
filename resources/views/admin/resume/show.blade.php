@@ -15,4 +15,6 @@
     <div>{{$experience->start}} - {{$experience->end}}</div>
     <div>{{$experience->type}}</div>
     {!! $experience->markdown_description !!}
+
+    @include('partials.tags')
 @endsection
