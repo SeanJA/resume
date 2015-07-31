@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {!! Form::model($experience, ['route'=>'admin::resume::store', 'method' => 'put']) !!}
+    {!! Form::model($experience, ['route'=>'admin::resume::store', 'method' => 'put', 'files' => true]) !!}
 
     {!! Form::label('title', 'Title') !!}
     {!! Form::text('title', null, ['required'=>'required']) !!}
@@ -20,6 +20,9 @@
 
     {!! Form::label('description', 'Description') !!}
     {!! Form::textarea('description', null, ['required'=>'required']) !!}
+
+    {!! Form::label('tagging', 'Tags') !!}
+    {!! Form::text('tagging') !!}
 
     {!! Form::label('file', 'Image') !!}
     {!! Form::file('file') !!}
