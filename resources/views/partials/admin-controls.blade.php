@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            {!! Form::open(['route'=>['admin::resume::delete', 'id' => $experience->id], 'method'=>'delete']) !!}
+            {!! Form::open(['route'=>['admin::resume::delete', 'id' => $experience->id], 'method'=>'delete', 'class'=>'delete']) !!}
             {!! Form::submit('Delete') !!}
             {!! Form::close() !!}
         </li>
