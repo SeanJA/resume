@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminResumeController extends Controller
 {
@@ -96,8 +97,12 @@ class AdminResumeController extends Controller
      */
     public function update(UpdateExperienceRequest $request)
     {
-        $experience = Experience::find($request->input('id'));
-        $experience->fill($request->except('id', '_token', '_method'));
+        $experience = Experience::find($request->input('id'))
+            ->fill($request->except('id', '_token', '_method', 'tags'));
+
+
+
+//        Auth::user()->experiences();
 
         if($request->has('file')){
             $newFileName = $experience->id . '.' . $request->file('file')->getClientOriginalExtension();
@@ -105,7 +110,9 @@ class AdminResumeController extends Controller
             $experience->file = '/experience-images/' . $newFileName;
         }
 
-        $experience->save();
+        Auth::user()->experiences()->save($experience);
+
+        $experience->retag(explode(',',$request->get('tags')));
 
         return redirect()->route('admin::resume::show', ['id' => $experience->id]);
     }

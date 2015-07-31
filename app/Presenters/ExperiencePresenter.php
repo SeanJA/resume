@@ -60,4 +60,9 @@ class ExperiencePresenter extends BasePresenter
         $description = $this->wrappedObject->description;
         return markdown($description);
     }
+
+    public function tags()
+    {
+        return implode(',',$this->wrappedObject->tagNames());
+    }
 }

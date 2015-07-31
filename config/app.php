@@ -149,6 +149,7 @@ return [
          */
         McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
         App\Providers\HtmlServiceProvider::class, //mine
+        Conner\Tagging\TaggingServiceProvider::class
     ],
 
     /*

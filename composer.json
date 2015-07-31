@@ -10,7 +10,8 @@
         "laravel/homestead": "^2.1",
         "cebe/markdown": "~1.0.1",
         "laravelcollective/html": "5.1.*",
-        "mccool/laravel-auto-presenter": "~4.0"
+        "mccool/laravel-auto-presenter": "~4.0",
+        "rtconner/laravel-tagging": "~1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -31,6 +31,9 @@
     {!! Form::label('description', 'Description') !!}
     {!! Form::textarea('description', null, ['required'=>'required']) !!}
 
+    {!! Form::label('tags', 'Tags') !!}
+    {!! Form::text('tags') !!}
+
     {!! Form::label('file', 'Image') !!}
     {!! Form::file('file') !!}
 

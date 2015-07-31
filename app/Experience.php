@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Presenters\ExperiencePresenter;
+use Carbon\Carbon;
+use Conner\Tagging\TaggableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use McCool\LaravelAutoPresenter\HasPresenter;
@@ -15,6 +17,7 @@ use McCool\LaravelAutoPresenter\HasPresenter;
 class Experience extends Model implements HasPresenter
 {
     use SoftDeletes;
+    use TaggableTrait;
 
     /**
      * @var array
@@ -40,18 +43,31 @@ class Experience extends Model implements HasPresenter
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tags()
-    {
-        return $this->hasMany(Tag::class);
-    }
-
-    /**
      * @return mixed
      */
     public function getPresenterClass()
     {
         return ExperiencePresenter::class;
+    }
+
+    public function setEndAttribute($value)
+    {
+        return $this->attributes['end'] = empty($value)?  null : Carbon::parse($value);
+    }
+
+    public function getEndAttribute($value)
+    {
+        return $this->attributes['end'] = empty($value)?  null : Carbon::parse($value);
+    }
+
+    public function setStartAttribute($value)
+    {
+
+        return $this->attributes['start'] = empty($value)?  null : Carbon::parse($value);
+    }
+
+    public function getStartAttribute($value)
+    {
+        return $this->attributes['start'] = empty($value)?  null : Carbon::parse($value);
     }
 }
