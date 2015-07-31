@@ -4,6 +4,7 @@ namespace App\Presenters;
 
 use App\Experience;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
 class ExperiencePresenter extends BasePresenter
@@ -67,5 +68,21 @@ class ExperiencePresenter extends BasePresenter
     public function tagging()
     {
         return implode(',',$this->wrappedObject->tagNames());
+    }
+
+    /**
+     * @return Collection
+     */
+    public function tags()
+    {
+        return $this->wrappedObject->tags;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasTags()
+    {
+        return $this->wrappedObject->tags->count() > 0;
     }
 }

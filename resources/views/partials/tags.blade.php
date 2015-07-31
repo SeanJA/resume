@@ -1,4 +1,4 @@
-@if($experience->tags()->count() > 0)
+@if($experience->hasTags())
     <div class="large-12 columns">
         <strong>Skills / Tech:</strong>
         <small>
