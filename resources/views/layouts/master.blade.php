@@ -35,9 +35,9 @@
                 <div class="skills">
                     <h5>Looking for some specific skills?</h5>
                     <ul class="skill-list">
-                        @foreach ($tags as $tag):
+                        @foreach ($tags as $tag)
                         <li class="{{$tag->count < 2 ? 'hide-for-medium-down' : ''}}">
-                            <a class="skill" href="#" data-tag="{{$tag->keyname}}">{{$tag->name}} ({{$tag->count}})</a>
+                            <a class="skill" href="#" data-tag="{{$tag->slug}}">{{$tag->name}} ({{$tag->count}})</a>
                         </li>
                         @endforeach
                     </ul>

@@ -18,6 +18,7 @@ class ResumeController extends Controller
      */
     public function index()
     {
+        $tags = Experience::existingTags();
         $experiences = [
             'education' => Experience::where(['type' => 'Education'])->get(),
             'work' => Experience::where(['type' => 'Work'])->get(),
@@ -25,7 +26,7 @@ class ResumeController extends Controller
             'projects' => Experience::where(['type' => 'Projects'])->get(),
         ];
 
-        return view('resume.index', compact('experiences'));
+        return view('resume.index', compact('experiences', 'tags'));
     }
 
 }

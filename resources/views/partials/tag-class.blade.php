@@ -1,1 +1,1 @@
-<?php foreach ($experience['Tag'] as $k => $tag): ?><?php echo 'tag-'.h($tag['keyname']); ?> <?php endforeach; ?>
+@foreach($experience->tags() as $k => $tag){{'tag-'.$tag->slug}} @endforeach
