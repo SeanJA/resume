@@ -55,8 +55,19 @@ class AdminResumeController extends Controller
      */
     public function store(StoreExperienceRequest $request)
     {
-        $experience = new Experience($request->except('_token', '_method'));
-        $experience->save();
+        $experience = new Experience($request->except('_token', '_method', 'tagging'));
+
+        $file = $request->file('file');
+
+        if($file){
+            $newFileName = $experience->id . '.' . $request->file('file')->getClientOriginalExtension();
+            $file = $request->file('file')->move(public_path('experience-images'), $newFileName);
+            $experience->file = '/experience-images/' . $newFileName;
+        }
+
+        Auth::user()->experiences()->save($experience);
+
+        $experience->tag(explode(',',rtrim($request->get('tagging'), ',')));
 
         return redirect()->route('admin::resume::show', ['id' => $experience->id]);
     }
@@ -98,9 +109,11 @@ class AdminResumeController extends Controller
     public function update(UpdateExperienceRequest $request)
     {
         $experience = Experience::find($request->input('id'))
-            ->fill($request->except('id', '_token', '_method', 'tags'));
+            ->fill($request->except('id', '_token', '_method', 'tagging'));
 
-        if($request->has('file')){
+        $file = $request->file('file');
+
+        if($file){
             $newFileName = $experience->id . '.' . $request->file('file')->getClientOriginalExtension();
             $file = $request->file('file')->move(public_path('experience-images'), $newFileName);
             $experience->file = '/experience-images/' . $newFileName;
@@ -108,7 +121,11 @@ class AdminResumeController extends Controller
 
         Auth::user()->experiences()->save($experience);
 
-        $experience->retag(explode(',',rtrim($request->get('tagging'), ',')));
+        if($request->has('tagging')){
+            $experience->retag(explode(',',rtrim($request->get('tagging'), ',')));
+        } else {
+            $experience->untag();
+        }
 
         return redirect()->route('admin::resume::show', ['id' => $experience->id]);
     }
