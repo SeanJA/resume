@@ -100,10 +100,6 @@ class AdminResumeController extends Controller
         $experience = Experience::find($request->input('id'))
             ->fill($request->except('id', '_token', '_method', 'tags'));
 
-
-
-//        Auth::user()->experiences();
-
         if($request->has('file')){
             $newFileName = $experience->id . '.' . $request->file('file')->getClientOriginalExtension();
             $file = $request->file('file')->move(public_path('experience-images'), $newFileName);
@@ -112,7 +108,7 @@ class AdminResumeController extends Controller
 
         Auth::user()->experiences()->save($experience);
 
-        $experience->retag(explode(',',$request->get('tags')));
+        $experience->retag(explode(',',rtrim($request->get('tagging'), ',')));
 
         return redirect()->route('admin::resume::show', ['id' => $experience->id]);
     }
