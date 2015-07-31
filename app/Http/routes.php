@@ -66,4 +66,9 @@ Route::group(['prefix' => 'admin','as' => 'admin::resume::'], function () {
         'as' => 'update',
         'uses' => 'Admin\AdminResumeController@update'
     ]);
+
+    Route::delete('delete/{id}', [
+        'as' => 'delete',
+        'uses' => 'Admin\AdminResumeController@destroy'
+    ]);
 });
