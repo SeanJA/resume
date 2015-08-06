@@ -19,12 +19,7 @@ class ResumeController extends Controller
     public function index()
     {
         $tags = Experience::existingTags();
-        $experiences = [
-            'education' => Experience::where(['type' => 'Education'])->get(),
-            'work' => Experience::where(['type' => 'Work'])->get(),
-            'open-source' => Experience::where(['type' => 'Open-source'])->get(),
-            'projects' => Experience::where(['type' => 'Projects'])->get(),
-        ];
+        $experiences = Experience::all();
 
         return view('resume.index', compact('experiences', 'tags'));
     }
