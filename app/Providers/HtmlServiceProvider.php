@@ -16,6 +16,11 @@ use Collective\Html\HtmlServiceProvider as CollectiveHtmlServiceProvider;
 class HtmlServiceProvider extends CollectiveHtmlServiceProvider
 {
     /**
+     * @var \Illuminate\Contracts\Foundation\Application
+     */
+    protected $app;
+
+    /**
      * Register the service provider.
      *
      * @return void
