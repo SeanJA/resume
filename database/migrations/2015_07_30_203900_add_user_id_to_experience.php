@@ -14,6 +14,7 @@ class AddUserIdToExperience extends Migration
     {
         Schema::table('experiences', function(Blueprint $table){
             $table->integer('user_id')
+                ->nullable()
                 ->unsigned()
                 ->references('user')
                 ->onDelete('cascade');
