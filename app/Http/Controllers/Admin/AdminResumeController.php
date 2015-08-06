@@ -138,6 +138,7 @@ class AdminResumeController extends Controller
      */
     public function destroy(DestroyExperienceRequest $request)
     {
-
+        $experience = Experience::find($request->get('id'));
+        Auth::user()->experiences()->destroy($experience);
     }
 }
